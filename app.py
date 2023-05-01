@@ -24,7 +24,7 @@ csrf = CSRFProtect(app)
 mail = Mail(app)
 
 # set this to false in production!!
-debug = True
+debug = False
 
 
 @app.context_processor
@@ -112,5 +112,3 @@ def sendEmail():
     )
 
 
-if __name__ == "__main__":
-    app.run()
