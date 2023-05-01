@@ -5,17 +5,18 @@ from flask_wtf.csrf import CSRFProtect
 from flask import render_template
 from flask_mail import Mail, Message
 import smtplib
+import os
 
 app = Flask(__name__)
 
-app.secret_key = 'ASECERTKEYANDTHISISSOM212312ERANDOMTEXTIQWJEOIQJWEIQOWEJ1290312895189239012@(#*!@#*(!@))'
+app.secret_key = os.environ.get('SECRET_KEY')
 app.permanent_session_lifetime = timedelta(days=1)
 
 # configuration of mail
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'you_gmail'
-app.config['MAIL_PASSWORD'] = 'your_password'
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
