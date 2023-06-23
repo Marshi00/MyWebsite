@@ -9,7 +9,7 @@ import os
 
 app = Flask(__name__)
 
-app.secret_key = 'SECRET_KEY'
+app.secret_key = os.environ.get('SECRET_KEY')
 app.permanent_session_lifetime = timedelta(days=1)
 
 # configuration of mail
@@ -112,5 +112,3 @@ def sendEmail():
         msg=msg
     )
 
-if __name__ == "__main__":
-    app.run(debug=True)
